@@ -2,7 +2,11 @@
 
 Simple example of vibration patterns available in Fitbit OS.
 
-[Link to private App Gallery](https://gam.fitbit.com/gallery/app/33712a45-bbdd-4b64-912e-df0531d7d40c)
+Links:
+
+* [Haptics Demo on App Gallery](https://gam.fitbit.com/gallery/app/33712a45-bbdd-4b64-912e-df0531d7d40c)
+* [Vibration Usage Guidelines](https://dev.fitbit.com/build/guides/design-guidelines/visual-styles/#haptics)
+* [API Reference](https://dev.fitbit.com/build/reference/device-api/haptics/)
 
 Just a list the available patters.
 Touch to items in the list to trigger.
