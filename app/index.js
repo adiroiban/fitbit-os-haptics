@@ -7,7 +7,10 @@ import { vibration } from "haptics"
 */
 
 me.onunload = () => {
-  vibration.start('ping')
+    if (manual_exit) {
+        return
+    }
+    vibration.start('ping')
 }
 
 
@@ -15,6 +18,7 @@ me.onunload = () => {
 ------------------ UI handling.
 */
 
+let manual_exit = false
 let last_back = new Date().getTime()
 let list = document.getElementById("vibration-list")
 let items = list.getElementsByClassName("tile-list-item")
@@ -23,6 +27,11 @@ items.forEach((element, index) => {
     let touch = element.getElementById('touch-me')
     let text = element.getElementById('text').text
     touch.onclick = (event) => {
+        if (text == 'Quit App') {
+            manual_exit = true
+            me.exit()
+            return
+        }
         vibration.start(text);
     }
 })

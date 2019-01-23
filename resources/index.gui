@@ -34,6 +34,9 @@
     <use href="#my-tile-item" class="tile-list-item">
       <set href="text" attributeName="text-buffer" to="ring" />
     </use>
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="Quit App" />
+    </use>
   </use>
 </svg>
 
