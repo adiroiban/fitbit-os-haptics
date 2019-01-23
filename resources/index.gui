@@ -1,0 +1,39 @@
+<svg>
+  <defs>
+    <symbol id="my-tile-item" href="#tile-list-item" focusable="false"
+            pointer-events="none" system-events="all">
+      <text id="text" />
+      <rect id="tile-divider-bottom" class="tile-divider-bottom" />
+      <rect id="touch-me" pointer-events="all" x="0" y="0" width="100%"
+            height="100%-2" opacity="0" />
+    </symbol>
+  </defs>
+  <use id="vibration-list" href="#tile-list">
+    <var id="separator-height-bottom" value="2" />
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="alert" />
+    </use>
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="bump" />
+    </use>
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="confirmation" />
+    </use>
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="confirmation-max" />
+    </use>
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="nudge" />
+    </use>
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="nudge-max" />
+    </use>
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="ping" />
+    </use>
+    <use href="#my-tile-item" class="tile-list-item">
+      <set href="text" attributeName="text-buffer" to="ring" />
+    </use>
+  </use>
+</svg>
+
