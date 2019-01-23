@@ -17,27 +17,74 @@ me.onunload = () => {
 /*
 ------------------ UI handling.
 */
+let patterns = [
+    "alert",
+    "bump",
+    "confirmation",
+    "confirmation-max",
+    "nudge",
+    "nudge-max",
+    "ping",
+    "ring",
+    ]
+patterns.push('Quit App')
 
 let manual_exit = false
 let last_back = new Date().getTime()
-let list = document.getElementById("vibration-list")
-let items = list.getElementsByClassName("tile-list-item")
+let list_ui = document.getElementById('vibration-list')
+let notification_animation = document.getElementById('notification-animation')
+notification_animation.style.opacity = 0
 
-items.forEach((element, index) => {
-    let touch = element.getElementById('touch-me')
-    let text = element.getElementById('text').text
-    touch.onclick = (event) => {
-        if (text == 'Quit App') {
+
+list_ui.delegate = {
+    getTileInfo: function(index) {
+        return {
+            type: "my-pool",
+            value: patterns[index],
+            index: index
+            }
+    },
+    configureTile: function(tile, info) {
+        if (info.type != "my-pool") { return }
+
+        let text = tile.getElementById("text")
+        text.text = info.value
+
+        let doExit = () => {
             manual_exit = true
             me.exit()
-            return
         }
-        vibration.start(text);
+
+        let doVibrate = () => {
+            console.log('Trigger: ' + info.value)
+            let result = vibration.start(info.value)
+            if (!result) {
+                // New vibration could not be triggers.
+                notification_animation.style.opacity = 1
+                console.log('Motor busy')
+                notification_animation.animate('enable')
+            }
+        }
+
+        let onClick
+        if (info.value == 'Quit App') {
+            onClick = doExit
+            let background = tile.getElementById('background')
+            background.style.fill = 'orange'
+            text.style.fill = 'black'
+        } else {
+            onClick = doVibrate
+        }
+
+        let touch = tile.getElementById('touch-me')
+        touch.onclick = (event) => onClick()
     }
-})
+}
+
+// It must be set AFTER `delegate`.
+list_ui.length = patterns.length
 
 document.onkeypress = function(event) {
-    console.log("Key pressed: " + event.key)
     let now = new Date().getTime()
     if (event.key == 'back') {
         vibration.stop()

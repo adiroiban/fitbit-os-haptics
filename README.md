@@ -8,8 +8,10 @@ Links:
 * [Vibration Usage Guidelines](https://dev.fitbit.com/build/guides/design-guidelines/visual-styles/#haptics)
 * [API Reference](https://dev.fitbit.com/build/reference/device-api/haptics/)
 
-Just a list the available patters.
+Just a list the available patterns.
 Touch to items in the list to trigger.
+
+You can't trigger another vibration, if the device is already vibrating.
 
 Press back button to stop the vibration.
 

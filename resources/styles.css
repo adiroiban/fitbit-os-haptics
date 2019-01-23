@@ -5,6 +5,7 @@
 .tile-list-item text {
   font-family: System-Regular;
   fill: "white";
+  x: 10;
 }
 
 .tile-divider-bottom {

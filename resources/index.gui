@@ -1,42 +1,49 @@
 <svg>
+
   <defs>
     <symbol id="my-tile-item" href="#tile-list-item" focusable="false"
-            pointer-events="none" system-events="all">
-      <text id="text" />
+            pointer-events="none" system-events="all" display="none">
+      <rect id="background" pointer-events="all" x="0" y="0" width="100%"
+            height="100%" opacity="1" />
+      <text id="text" text-length="50"/>
       <rect id="tile-divider-bottom" class="tile-divider-bottom" />
       <rect id="touch-me" pointer-events="all" x="0" y="0" width="100%"
             height="100%-2" opacity="0" />
     </symbol>
+
+    <symbol id="notification">
+      <g>
+        <rect id="notification-background" x="0" y="0" width="100%" height="100%" fill="black" pointer-events="none" />
+        <text text-length="50" fill="white" pointer-events="none">
+          Motor busy!
+        </text>
+        <animate attributeName="opacity" begin="enable"
+            from="1" to="0" dur="1.5" easing="ease-in" final="keep" />
+      </g>
+    </symbol>
+
   </defs>
+
   <use id="vibration-list" href="#tile-list">
+    <var id="virtual" value="1" />
     <var id="separator-height-bottom" value="2" />
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="alert" />
-    </use>
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="bump" />
-    </use>
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="confirmation" />
-    </use>
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="confirmation-max" />
-    </use>
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="nudge" />
-    </use>
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="nudge-max" />
-    </use>
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="ping" />
-    </use>
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="ring" />
-    </use>
-    <use href="#my-tile-item" class="tile-list-item">
-      <set href="text" attributeName="text-buffer" to="Quit App" />
+
+    <use id="my-pool" href="#tile-list-pool">
+      <use id="my-pool[0]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[1]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[2]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[3]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[4]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[5]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[6]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[7]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[8]" href="#my-tile-item" class="tile-list-item" />
+      <use id="my-pool[9]" href="#my-tile-item" class="tile-list-item" />
     </use>
   </use>
-</svg>
 
+  <svg width="100%" height="100%">
+    <use id="notification-animation" href="#notification" width="100%" height="100%" />
+  </svg>
+
+</svg>
